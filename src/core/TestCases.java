@@ -418,6 +418,7 @@ public class TestCases {
 					Resource resource = (Resource) resourcePool.acquire();
 
 					Thread.currentThread().sleep(5000);
+					resourcePool.release(resource);
 
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -429,9 +430,11 @@ public class TestCases {
 		Resource resource = null;
 
 		try {
-			resourcePool.acquire(3500, TimeUnit.MILLISECONDS);
+			resource = (Resource) resourcePool.acquire(5000,
+					TimeUnit.MILLISECONDS);
 			Assert.assertEquals("Nothing in the pool", null, resource);
-			resourcePool.acquire(3500, TimeUnit.MILLISECONDS);
+			resource = (Resource) resourcePool.acquire(3500,
+					TimeUnit.MILLISECONDS);
 			Assert.assertNotNull("I should get a resource now", resource);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
