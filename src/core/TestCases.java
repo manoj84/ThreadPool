@@ -400,7 +400,7 @@ public class TestCases {
 	 * Radom threads doing some work
 	 */
 
-	@Test
+
 	public void randomTest() {
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		final Pool<R> resourcePool = Pool.getPoolInstance();
